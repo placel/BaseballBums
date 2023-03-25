@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
+    <title>Count</title>
+</head>
+<body>
+    <div class="count"></div>
+</body>
+</html>
+
+<script>
+    async function getFile(name) {
+        // const data = await fetch(`http://localhost:3000/${name}`).then(res => res.json());
+        const data = await fetch(`http://localhost:5001/${name}`).then(res => res.json());
+        return data;
+    }
+
+    $(document).ready(async function () {
+        const count = await getFile('count.txt');
+
+        document.getElementsByClassName('count')[0].innerText = `Count: ${count}`
+    });
+
+</script>
